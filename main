@@ -1,0 +1,700 @@
+import tkinter as tk
+from tkinter import ttk
+
+root = tk.Tk()
+root.title("Finančné údaje")
+
+# Konfigurácia grid-u hlavného okna pre tri stĺpce
+root.columnconfigure(0, weight=1)
+root.columnconfigure(1, weight=1)
+root.columnconfigure(2, weight=1)
+
+# ---------------------------------
+# 1. Stĺpec: Príjmové údaje
+# ---------------------------------
+frame_prvy = ttk.LabelFrame(root, text="Príjmové údaje")
+frame_prvy.grid(row=0, column=0, padx=10, pady=10, sticky="nsew")
+
+labels_prvy = [
+    "Tržby:",
+    "Zisk:",
+    "Celkové výnosy:",
+    "Celkové náklady:",
+    "Pridaná hodnota:",
+
+    "TržbyPred:",
+    "ZiskPred:",
+    "APred:",
+    "VIPred:",
+    "CKPred:",
+    "CVPred:",
+]
+
+entries_prvy = {}
+for i, text in enumerate(labels_prvy):
+    label = ttk.Label(frame_prvy, text=text)
+    label.grid(row=i, column=0, padx=5, pady=5, sticky="e")
+    entry = ttk.Entry(frame_prvy, width=30)
+    entry.grid(row=i, column=1, padx=5, pady=5)
+    entries_prvy[text] = entry
+
+
+print(entries_prvy)
+
+
+
+frame_aktiva = ttk.LabelFrame(root, text="Aktíva")
+frame_aktiva.grid(row=0, column=1, padx=10, pady=10, sticky="nsew")
+
+label_aktiva_celkom = ttk.Label(frame_aktiva, text="Aktíva celkom:")
+label_aktiva_celkom.grid(row=0, column=0, padx=5, pady=5, sticky="w")
+entry_aktiva_celkom = ttk.Entry(frame_aktiva, width=30)
+entry_aktiva_celkom.grid(row=0, column=1, padx=5, pady=5)
+
+label_staly = ttk.Label(frame_aktiva, text="Stály majetok:")
+label_staly.grid(row=1, column=0, padx=5, pady=2, sticky="w")
+entry_staly = ttk.Entry(frame_aktiva, width=30)
+entry_staly.grid(row=1, column=1, padx=5, pady=2)
+
+label_dlh_nehmotny = ttk.Label(frame_aktiva, text="Dlhodobý nehmotný majetok:")
+label_dlh_nehmotny.grid(row=2, column=0, padx=5, pady=2, sticky="w")
+entry_dlh_nehmotny = ttk.Entry(frame_aktiva, width=30)
+entry_dlh_nehmotny.grid(row=2, column=1, padx=5, pady=2)
+
+label_dlh_hmotny = ttk.Label(frame_aktiva, text="Dlhodobý hmotný majetok:")
+label_dlh_hmotny.grid(row=3, column=0, padx=5, pady=2, sticky="w")
+entry_dlh_hmotny = ttk.Entry(frame_aktiva, width=30)
+entry_dlh_hmotny.grid(row=3, column=1, padx=5, pady=2)
+
+label_dlh_financny = ttk.Label(frame_aktiva, text="Dlhodobý finančný majetok:")
+label_dlh_financny.grid(row=4, column=0, padx=5, pady=2, sticky="w")
+entry_dlh_financny = ttk.Entry(frame_aktiva, width=30)
+entry_dlh_financny.grid(row=4, column=1, padx=5, pady=2)
+
+label_obezny = ttk.Label(frame_aktiva, text="Obežný majetok:")
+label_obezny.grid(row=5, column=0, padx=5, pady=(10,2), sticky="w")
+entry_obezny = ttk.Entry(frame_aktiva, width=30)
+entry_obezny.grid(row=5, column=1, padx=5, pady=(10,2))
+
+label_zasoby = ttk.Label(frame_aktiva, text="Zásoby:")
+label_zasoby.grid(row=6, column=0, padx=5, pady=2, sticky="w")
+entry_zasoby = ttk.Entry(frame_aktiva, width=30)
+entry_zasoby.grid(row=6, column=1, padx=5, pady=2)
+
+label_dlh_pohladavky = ttk.Label(frame_aktiva, text="Dlhodobé pohľadávky:")
+label_dlh_pohladavky.grid(row=7, column=0, padx=5, pady=2, sticky="w")
+entry_dlh_pohladavky = ttk.Entry(frame_aktiva, width=30)
+entry_dlh_pohladavky.grid(row=7, column=1, padx=5, pady=2)
+
+label_krat_pohladavky = ttk.Label(frame_aktiva, text="Krátkodobé pohľadávky:")
+label_krat_pohladavky.grid(row=8, column=0, padx=5, pady=2, sticky="w")
+entry_krat_pohladavky = ttk.Entry(frame_aktiva, width=30)
+entry_krat_pohladavky.grid(row=8, column=1, padx=5, pady=2)
+
+label_krat_financny = ttk.Label(frame_aktiva, text="Krátkodobý finančný majetok:")
+label_krat_financny.grid(row=9, column=0, padx=5, pady=2, sticky="w")
+entry_krat_financny = ttk.Entry(frame_aktiva, width=30)
+entry_krat_financny.grid(row=9, column=1, padx=5, pady=2)
+
+label_financne_ucty = ttk.Label(frame_aktiva, text="Finančné účty:")
+label_financne_ucty.grid(row=10, column=0, padx=5, pady=2, sticky="w")
+entry_financne_ucty = ttk.Entry(frame_aktiva, width=30)
+entry_financne_ucty.grid(row=10, column=1, padx=5, pady=2)
+
+label_cas_aktiva = ttk.Label(frame_aktiva, text="Časové rozlíšenie:")
+label_cas_aktiva.grid(row=11, column=0, padx=5, pady=(10,2), sticky="w")
+entry_cas_aktiva = ttk.Entry(frame_aktiva, width=30)
+entry_cas_aktiva.grid(row=11, column=1, padx=5, pady=(10,2))
+
+# ---------------------------------
+# 3. Stĺpec: Pasíva
+# ---------------------------------
+frame_pasiva = ttk.LabelFrame(root, text="Pasíva")
+frame_pasiva.grid(row=0, column=2, padx=10, pady=10, sticky="nsew")
+
+label_pasiva_celkom = ttk.Label(frame_pasiva, text="Pasíva celkom:")
+label_pasiva_celkom.grid(row=0, column=0, padx=5, pady=5, sticky="w")
+entry_pasiva_celkom = ttk.Entry(frame_pasiva, width=30)
+entry_pasiva_celkom.grid(row=0, column=1, padx=5, pady=5)
+
+label_vlastne_imanie = ttk.Label(frame_pasiva, text="Vlastné imanie:")
+label_vlastne_imanie.grid(row=1, column=0, padx=5, pady=(10,2), sticky="w")
+entry_vlastne_imanie = ttk.Entry(frame_pasiva, width=30)
+entry_vlastne_imanie.grid(row=1, column=1, padx=5, pady=(10,2))
+
+label_zakladny_kapital = ttk.Label(frame_pasiva, text="Zakladný kapitál:")
+label_zakladny_kapital.grid(row=2, column=0, padx=5, pady=2, sticky="w")
+entry_zakladny_kapital = ttk.Entry(frame_pasiva, width=30)
+entry_zakladny_kapital.grid(row=2, column=1, padx=5, pady=2)
+
+label_emisne_azio = ttk.Label(frame_pasiva, text="Emisné ážio:")
+label_emisne_azio.grid(row=3, column=0, padx=5, pady=2, sticky="w")
+entry_emisne_azio = ttk.Entry(frame_pasiva, width=30)
+entry_emisne_azio.grid(row=3, column=1, padx=5, pady=2)
+
+label_ostatne_kapitalove = ttk.Label(frame_pasiva, text="Ostatné kapitálové fondy:")
+label_ostatne_kapitalove.grid(row=4, column=0, padx=5, pady=2, sticky="w")
+entry_ostatne_kapitalove = ttk.Entry(frame_pasiva, width=30)
+entry_ostatne_kapitalove.grid(row=4, column=1, padx=5, pady=2)
+
+label_zakonne_rezervne = ttk.Label(frame_pasiva, text="Zakonné rezervné fondy:")
+label_zakonne_rezervne.grid(row=5, column=0, padx=5, pady=2, sticky="w")
+entry_zakonne_rezervne = ttk.Entry(frame_pasiva, width=30)
+entry_zakonne_rezervne.grid(row=5, column=1, padx=5, pady=2)
+
+label_ostatne_z_zisku = ttk.Label(frame_pasiva, text="Ostatné fondy zo zisku:")
+label_ostatne_z_zisku.grid(row=6, column=0, padx=5, pady=2, sticky="w")
+entry_ostatne_z_zisku = ttk.Entry(frame_pasiva, width=30)
+entry_ostatne_z_zisku.grid(row=6, column=1, padx=5, pady=2)
+
+label_ocen_rozdiely = ttk.Label(frame_pasiva, text="Oceňovacie rozdiely z precenenia:")
+label_ocen_rozdiely.grid(row=7, column=0, padx=5, pady=2, sticky="w")
+entry_ocen_rozdiely = ttk.Entry(frame_pasiva, width=30)
+entry_ocen_rozdiely.grid(row=7, column=1, padx=5, pady=2)
+
+label_vysl_hosp_miny = ttk.Label(frame_pasiva, text="Výsledok hospodárenia minulých rokov:")
+label_vysl_hosp_miny.grid(row=8, column=0, padx=5, pady=2, sticky="w")
+entry_vysl_hosp_miny = ttk.Entry(frame_pasiva, width=30)
+entry_vysl_hosp_miny.grid(row=8, column=1, padx=5, pady=2)
+
+label_vysl_hosp_obd = ttk.Label(frame_pasiva, text="Výsledok hospodárenia za účtovné obdobie po zdanení:")
+label_vysl_hosp_obd.grid(row=9, column=0, padx=5, pady=2, sticky="w")
+entry_vysl_hosp_obd = ttk.Entry(frame_pasiva, width=30)
+entry_vysl_hosp_obd.grid(row=9, column=1, padx=5, pady=2)
+
+label_zavazky = ttk.Label(frame_pasiva, text="Záväzky:")
+label_zavazky.grid(row=10, column=0, padx=5, pady=(10,2), sticky="w")
+entry_zavazky = ttk.Entry(frame_pasiva, width=30)
+entry_zavazky.grid(row=10, column=1, padx=5, pady=(10,2))
+
+label_dlh_zavazky = ttk.Label(frame_pasiva, text="Dlhodobé záväzky:")
+label_dlh_zavazky.grid(row=11, column=0, padx=5, pady=2, sticky="w")
+entry_dlh_zavazky = ttk.Entry(frame_pasiva, width=30)
+entry_dlh_zavazky.grid(row=11, column=1, padx=5, pady=2)
+
+label_dlh_zav_obchod = ttk.Label(frame_pasiva, text="Dlhodobé záväzky z obchodného styku súčet:")
+label_dlh_zav_obchod.grid(row=12, column=0, padx=5, pady=2, sticky="w")
+entry_dlh_zav_obchod = ttk.Entry(frame_pasiva, width=30)
+entry_dlh_zav_obchod.grid(row=12, column=1, padx=5, pady=2)
+
+label_dlh_rezervy = ttk.Label(frame_pasiva, text="Dlhodobé rezervy:")
+label_dlh_rezervy.grid(row=13, column=0, padx=5, pady=2, sticky="w")
+entry_dlh_rezervy = ttk.Entry(frame_pasiva, width=30)
+entry_dlh_rezervy.grid(row=13, column=1, padx=5, pady=2)
+
+label_dlh_bankove = ttk.Label(frame_pasiva, text="Dlhodobé bankové úvery:")
+label_dlh_bankove.grid(row=14, column=0, padx=5, pady=2, sticky="w")
+entry_dlh_bankove = ttk.Entry(frame_pasiva, width=30)
+entry_dlh_bankove.grid(row=14, column=1, padx=5, pady=2)
+
+label_krat_zavazky = ttk.Label(frame_pasiva, text="Krátkodobé záväzky:")
+label_krat_zavazky.grid(row=15, column=0, padx=5, pady=2, sticky="w")
+entry_krat_zavazky = ttk.Entry(frame_pasiva, width=30)
+entry_krat_zavazky.grid(row=15, column=1, padx=5, pady=2)
+
+label_zav_obchod = ttk.Label(frame_pasiva, text="Záväzky z obchodného styku:")
+label_zav_obchod.grid(row=16, column=0, padx=5, pady=2, sticky="w")
+entry_zav_obchod = ttk.Entry(frame_pasiva, width=30)
+entry_zav_obchod.grid(row=16, column=1, padx=5, pady=2)
+
+label_krat_rezervy = ttk.Label(frame_pasiva, text="Krátkodobé rezervy:")
+label_krat_rezervy.grid(row=17, column=0, padx=5, pady=2, sticky="w")
+entry_krat_rezervy = ttk.Entry(frame_pasiva, width=30)
+entry_krat_rezervy.grid(row=17, column=1, padx=5, pady=2)
+
+label_cas_rozlis_sum = ttk.Label(frame_pasiva, text="Časové rozlíšenie súčet:")
+label_cas_rozlis_sum.grid(row=18, column=0, padx=5, pady=(10,5), sticky="w")
+entry_cas_rozlis_sum = ttk.Entry(frame_pasiva, width=30)
+entry_cas_rozlis_sum.grid(row=18, column=1, padx=5, pady=(10,5))
+
+# Pomocná funkcia na konverziu hodnoty z entry na float
+def get_float(entry):
+    try:
+        return float(entry.get())
+    except ValueError:
+        return 0.000
+    
+def farba_quicktest(hodnota, hranice):
+    if isinstance(hodnota, (int, float)):
+        if hranice["typ"] == "viac":
+            if hodnota >= hranice["zelena"]:
+                return "green"
+            elif hodnota >= hranice["oranzova"]:
+                return "orange"
+            else:
+                return "red"
+        elif hranice["typ"] == "menej":
+            if hodnota <= hranice["zelena"]:
+                return "green"
+            elif hodnota <= hranice["oranzova"]:
+                return "orange"
+            else:
+                return "red"
+    return "black"
+    
+def vypis_ukazatele():
+
+    trzby = get_float(entries_prvy["Tržby:"])
+    zisk = get_float(entries_prvy["Zisk:"])
+    celk_naklady = get_float(entries_prvy["Celkové náklady:"])
+    celk_vynosy = get_float(entries_prvy["Celkové výnosy:"])
+    pridana_hodnota = get_float(entries_prvy["Pridaná hodnota:"])
+
+    zisk_pred = get_float(entries_prvy["ZiskPred:"])
+    trzby_pred = get_float(entries_prvy["TržbyPred:"])
+    apred = get_float(entries_prvy["APred:"])
+    vipred = get_float(entries_prvy["VIPred:"])
+    ckpred = get_float(entries_prvy["CKPred:"])
+    cvpred = get_float(entries_prvy["CVPred:" ])
+
+
+    aktiva = get_float(entry_aktiva_celkom)
+    SA = get_float(entry_staly)
+    DNHM = get_float(entry_dlh_nehmotny)
+    DHM = get_float(entry_dlh_hmotny)
+    DFM = get_float(entry_dlh_financny)
+    OA = get_float(entry_obezny)
+    zasoby = get_float(entry_zasoby)
+    dlh_pohladavky = get_float(entry_dlh_pohladavky)
+    krat_pohladavky = get_float(entry_krat_pohladavky)
+    krat_fm = get_float(entry_krat_financny)
+    CR_a = get_float(entry_cas_aktiva)
+
+
+    pasiva = get_float(entry_pasiva_celkom)
+    vlastne_imanie = get_float(entry_vlastne_imanie)
+    ZK = get_float(entry_zakladny_kapital)
+    azio = get_float(entry_emisne_azio)
+    OKF = get_float(entry_ostatne_kapitalove)
+    ZRF = get_float(entry_zakonne_rezervne)
+    OF = get_float(entry_ostatne_z_zisku)
+    ocen_rozdiely = get_float(entry_ocen_rozdiely)
+    VHMR = get_float(entry_vysl_hosp_miny)
+    VH = get_float(entry_vysl_hosp_obd)
+    zavazky = get_float(entry_zavazky)
+    DZ = get_float(entry_dlh_zavazky)
+    DZO = get_float(entry_dlh_zav_obchod)
+    dlh_rezervy = get_float(entry_dlh_rezervy)
+    dlh_BU = get_float(entry_dlh_bankove)
+    krat_zavazky = get_float(entry_krat_zavazky)
+    zavazky_obchod = get_float(entry_zav_obchod)
+    krat_rezervy = get_float(entry_krat_rezervy)
+    cas_p = get_float(entry_cas_rozlis_sum)
+
+
+
+    new_window = tk.Toplevel(root)
+    new_window.title("Ukazatele")
+
+    # Vytvor Frame pre canvas a scrollbar
+    frame = tk.Frame(new_window)
+    frame.pack(fill="both", expand=True)
+
+    # Scrollbar
+    scrollbar = tk.Scrollbar(frame, orient="vertical")
+    scrollbar.pack(side="right", fill="y")
+
+    # Canvas s priradeným scrollbarom
+    canvas = tk.Canvas(frame, width=600, height=600, yscrollcommand=scrollbar.set)
+    canvas.pack(side="left", fill="both", expand=True)
+    scrollbar.config(command=canvas.yview)
+
+    # Umožni skrolovanie
+    canvas.bind('<Configure>', lambda e: canvas.configure(scrollregion=canvas.bbox("all")))
+
+
+
+    x = 10
+    y = 10
+    spacing = 30
+
+    
+
+    zlate_pravidlo = round((vlastne_imanie / SA),2) if SA != 0 else 0
+    canvas.create_text(x, y, anchor="nw", text= f"Zlaté bil pravidlo: {zlate_pravidlo}")
+    y+=spacing
+
+
+    dlhodobe_zdroje = round((vlastne_imanie + DZ),2)
+    zlate_pravidlo_financovania = round(dlhodobe_zdroje / SA, 2) if SA != 0 else 0
+    canvas.create_text(x, y, anchor="nw", text= f"zlate_pravidlo_financovania: {zlate_pravidlo_financovania}")
+    y+=spacing
+
+
+
+    def horizontalna_analyza(nova, stara):
+        return round(((nova - stara) / stara) *100, 2) if stara != 0 else 0
+
+    zmena_trzby = horizontalna_analyza(trzby, trzby_pred)
+    zmena_zisk = horizontalna_analyza(zisk, zisk_pred)
+    zmena_aktiva = horizontalna_analyza(aktiva, apred)
+    zmena_vynos = horizontalna_analyza(celk_vynosy, cvpred)
+    zmena_naklad = horizontalna_analyza(celk_naklady, ckpred)
+    zmena_imanie = horizontalna_analyza(vlastne_imanie, vipred)
+
+    canvas.create_text(x, y, anchor="nw", text= f"Horizontálna analýza - tržby: {zmena_trzby}%")
+    y+=20
+    canvas.create_text(x, y, anchor="nw", text= f"Horizontálna analýza - zisk: {zmena_zisk}%")
+    y+=20
+    canvas.create_text(x, y, anchor="nw", text= f"Horizontálna analýza - aktiva: {zmena_aktiva}%")
+    y+=20
+    canvas.create_text(x, y, anchor="nw", text= f"Horizontálna analýza - vynos: {zmena_vynos}%")
+    y+=20
+    canvas.create_text(x, y, anchor="nw", text= f"Horizontálna analýza - naklady: {zmena_naklad}%")
+    y+=20
+    canvas.create_text(x, y, anchor="nw", text= f"Horizontálna analýza - VI: {zmena_imanie}%")
+    y+=spacing
+
+
+   # VERTIKÁLNA ANALÝZA (s výstupom v %)
+    podiel_stalych = round((SA / aktiva) * 100, 2) if aktiva != 0 else 0
+    canvas.create_text(x, y, anchor="nw", text= f"Vert. analýza – Stály majetok: {podiel_stalych}%")
+    y += 20
+
+    podiel_obeznych = round((OA / aktiva) * 100, 2) if aktiva != 0 else 0
+    canvas.create_text(x, y, anchor="nw", text= f"Vert. analýza – Obežný majetok: {podiel_obeznych}%")
+    y += 20
+
+    podiel_zasoby = round((zasoby / aktiva) * 100, 2) if aktiva != 0 else 0
+    canvas.create_text(x, y, anchor="nw", text= f"Vert. analýza – Zásoby: {podiel_zasoby}%")
+    y += 20
+
+    podiel_krat_pohl = round((krat_pohladavky / aktiva) * 100, 2) if aktiva != 0 else 0
+    canvas.create_text(x, y, anchor="nw", text= f"Vert. analýza – Krátkodobé pohľadávky: {podiel_krat_pohl}%")
+    y += 20
+
+    podiel_financny = round((krat_fm / aktiva) * 100, 2) if aktiva != 0 else 0
+    canvas.create_text(x, y, anchor="nw", text= f"Vert. analýza – Krátkodobý finančný majetok: {podiel_financny}%")
+    y += 20
+
+    podiel_vlastne = round((vlastne_imanie / pasiva) * 100, 2) if pasiva != 0 else 0
+    canvas.create_text(x, y, anchor="nw", text= f"Vert. analýza – Vlastné imanie: {podiel_vlastne}%")
+    y += 20
+
+    podiel_krat_zavazky = round((krat_zavazky / pasiva) * 100, 2) if pasiva != 0 else 0
+    canvas.create_text(x, y, anchor="nw", text= f"Vert. analýza – Krátkodobé záväzky: {podiel_krat_zavazky}%")
+    y += 20
+
+    podiel_zisk_vynos = round((zisk / celk_vynosy) * 100, 2) if celk_vynosy != 0 else 0
+    canvas.create_text(x, y, anchor="nw", text= f"Vert. analýza – Zisk z výnosov: {podiel_zisk_vynos}%")
+    y += 20
+
+    podiel_trzby_vynos = round((trzby / celk_vynosy) * 100, 2) if celk_vynosy != 0 else 0
+    canvas.create_text(x, y, anchor="nw", text= f"Vert. analýza – Tržby z výnosov: {podiel_trzby_vynos}%")
+    y += spacing
+
+
+    # LIKVIDITNÉ UKAZOVATELE
+    cisty_prac_kapital = round((OA - krat_zavazky), 2)
+    canvas.create_text(x, y, anchor="nw", text= f"Čistý pracovný kapitál: {cisty_prac_kapital} €")
+    y += 20
+
+    ciste_pohotove = round((krat_pohladavky + krat_fm - krat_zavazky), 2)
+    canvas.create_text(x, y, anchor="nw", text= f"Čisté pohotové prostriedky: {ciste_pohotove} €")
+    y += 20
+
+    ciste_financne_fondy = round((krat_fm - krat_zavazky), 2)
+    canvas.create_text(x, y, anchor="nw", text= f"Čisté peňažno–pohľadávkové fondy: {ciste_financne_fondy} €")
+    y += spacing
+
+    # ANALÝZA MARŽE, NÁKLADOV A ZISKU
+    obchodna_marza = round((zisk / trzby) * 100, 2) if trzby != 0 else 0
+    canvas.create_text(x, y, anchor="nw", text= f"Obchodná marža (z tržieb): {obchodna_marza}%")
+    y += 20
+
+    analyza_nakladov = round((celk_naklady / celk_vynosy) * 100, 2) if celk_vynosy != 0 else 0
+    canvas.create_text(x, y, anchor="nw", text= f"Podiel nákladov na výnosoch: {analyza_nakladov}%")
+    y += 20
+
+    rentabilita_vynosov = round((zisk / celk_vynosy) * 100, 2) if celk_vynosy != 0 else 0
+    canvas.create_text(x, y, anchor="nw", text= f"Rentabilita výnosov (zisk): {rentabilita_vynosov}%")
+    y += spacing
+
+
+    # RENTABILITA
+    ROA = round((zisk / aktiva) * 100, 2) if aktiva != 0 else 0
+    canvas.create_text(x, y, anchor="nw", text= f"Rentabilita aktív (ROA): {ROA}%")
+    y += 20
+
+    ROE = round((zisk / vlastne_imanie) * 100, 2) if vlastne_imanie != 0 else 0
+    canvas.create_text(x, y, anchor="nw", text= f"Rentabilita vlastného imania (ROE): {ROE}%")
+    y += 20
+
+    ROS = round((zisk / trzby) * 100, 2) if trzby != 0 else 0
+    canvas.create_text(x, y, anchor="nw", text= f"Rentabilita tržieb (ROS): {ROS}%")
+    y += 20    
+
+    rentabilita_nakladov = round((zisk / celk_naklady) * 100, 2) if celk_naklady != 0 else 0
+    canvas.create_text(x, y, anchor="nw", text= f"Rentabilita nákladov: {rentabilita_nakladov}%")
+    y += spacing
+
+
+    # UKAZOVATELE AKTIVITY
+    obrat_aktiv = round((trzby / aktiva), 2) if aktiva != 0 else 0
+    canvas.create_text(x, y, anchor="nw", text= f"Obrat aktív: {obrat_aktiv}")
+    y += 20
+
+    obrat_zasob = round((celk_naklady / zasoby), 2) if zasoby != 0 else 0
+    canvas.create_text(x, y, anchor="nw", text= f"Obrat zásob: {obrat_zasob}")
+    y += 20
+
+    obrat_pohladavky = round((trzby / krat_pohladavky), 2) if krat_pohladavky != 0 else 0
+    canvas.create_text(x, y, anchor="nw", text= f"Obrat pohľadávok: {obrat_pohladavky}")
+    y += 20
+
+    obrat_zavazkov = round((celk_naklady / krat_zavazky), 2) if krat_zavazky != 0 else 0
+    canvas.create_text(x, y, anchor="nw", text= f"Obrat záväzkov: {obrat_zavazkov}")
+    y += 20
+
+    dlzka_obratu_zasob = round((zasoby / celk_naklady) * 365, 2) if celk_naklady != 0 else 0
+    canvas.create_text(x, y, anchor="nw", text= f"Dĺžka obratu zásob: {dlzka_obratu_zasob} dní")
+    y += 20
+
+    # Dĺžka obratu pohľadávok (v dňoch)
+    dlzka_obratu_pohladavok = round((krat_pohladavky / trzby) * 365, 2) if trzby != 0 else 0
+    canvas.create_text(x, y, anchor="nw", text= f"Dĺžka obratu pohľadávok: {dlzka_obratu_pohladavok} dní")
+    y += 20
+
+    # Dĺžka obratu záväzkov (v dňoch)
+    dlzka_obratu_zavazkov = round((krat_zavazky / celk_naklady) * 365, 2) if celk_naklady != 0 else 0
+    canvas.create_text(x, y, anchor="nw", text= f"Dĺžka obratu záväzkov: {dlzka_obratu_zavazkov} dní")
+    y += spacing
+
+
+    # UKAZOVATELE ZADLŽENOSTI A FINANČNEJ ŠTRUKTÚRY
+    miera_zadlzenosti = round((zavazky / pasiva) * 100, 2) if pasiva != 0 else 0
+    canvas.create_text(x, y, anchor="nw", text= f"Miera zadlženosti: {miera_zadlzenosti}%")
+    y += 20
+
+    podiel_vlastne_imanie = round((vlastne_imanie / pasiva) * 100, 2) if pasiva != 0 else 0
+    canvas.create_text(x, y, anchor="nw", text= f"Podiel vlastného imania: {podiel_vlastne_imanie}%")
+    y += 20
+
+    financna_samostatnost = round((vlastne_imanie / zavazky), 2) if zavazky != 0 else 0
+    canvas.create_text(x, y, anchor="nw", text= f"Finančná samostatnosť (VI/Záv): {financna_samostatnost}")
+    y += 20
+
+    celkova_zadlzenost = round((zavazky / vlastne_imanie), 2) if vlastne_imanie != 0 else 0
+    canvas.create_text(x, y, anchor="nw", text= f"Celková zadlženosť (Záv/VI): {celkova_zadlzenost}")
+    y += 20
+    dlhodoba_zadlzenost = round((DZ / pasiva) * 100, 2) if pasiva != 0 else 0
+    canvas.create_text(x, y, anchor="nw", text= f"Dlhodobá zadlženosť: {dlhodoba_zadlzenost}%")
+    y += spacing
+
+
+    # UKAZOVATELE LIKVIDITY
+
+    bezna_likvidita = round((OA / krat_zavazky), 2) if krat_zavazky != 0 else 0
+    canvas.create_text(x, y, anchor="nw", text= f"Bežná likvidita: {bezna_likvidita}")
+    y += 20
+
+    pohotova_likvidita = round(((OA - zasoby) / krat_zavazky), 2) if krat_zavazky != 0 else 0
+    canvas.create_text(x, y, anchor="nw", text= f"Pohotová likvidita: {pohotova_likvidita}")
+    y += 20
+
+    cash_ratio = round((krat_fm / krat_zavazky), 2) if krat_zavazky != 0 else 0
+    canvas.create_text(x, y, anchor="nw", text= f"Okamžitá likvidita (Cash ratio): {cash_ratio}")
+    y += spacing
+
+
+    # UKAZOVATELE PREVÁDZKOVEJ ČINNOSTI
+    obrat_pohladavok = round((trzby / krat_pohladavky), 2) if krat_pohladavky != 0 else 0
+    canvas.create_text(x, y, anchor="nw", text= f"Obrat pohľadávok: {obrat_pohladavok}")
+    y += 20
+
+    obrat_zavazkov = round((celk_naklady / krat_zavazky), 2) if krat_zavazky != 0 else 0
+    canvas.create_text(x, y, anchor="nw", text= f"Obrat záväzkov: {obrat_zavazkov}")
+    y += 20
+
+    dlzka_pohladavok = round((krat_pohladavky / trzby) * 365, 2) if trzby != 0 else 0
+    canvas.create_text(x, y, anchor="nw", text= f"Dĺžka obratu pohľadávok: {dlzka_pohladavok} dní")
+    y += 20
+
+    dlzka_zavazkov = round((krat_zavazky / celk_naklady) * 365, 2) if celk_naklady != 0 else 0
+    canvas.create_text(x, y, anchor="nw", text= f"Dĺžka obratu záväzkov: {dlzka_zavazkov} dní")
+    y += spacing
+
+    # ANALÝZA CASH-FLOW A FINANČNÝCH FONDOV
+    net_cash = round((krat_fm - krat_zavazky), 2)
+    canvas.create_text(x, y, anchor="nw", text= f"Net cash (peňažná pozícia): {net_cash} €")
+    y += 20
+
+    cash_ratio = round((krat_fm / krat_zavazky), 2) if krat_zavazky != 0 else 0
+    canvas.create_text(x, y, anchor="nw", text= f"Cash ratio: {cash_ratio}")
+    y += 20
+
+    financne_fondy = round((krat_fm + krat_pohladavky), 2)
+    canvas.create_text(x, y, anchor="nw", text= f"Finančné fondy (cash + pohľadávky): {financne_fondy} €")
+    y += 20
+
+    fondy_po_zavazkoch = round((krat_fm + krat_pohladavky - krat_zavazky), 2)
+    canvas.create_text(x, y, anchor="nw", text= f"Fin. fondy po záväzkoch: {fondy_po_zavazkoch} €")
+    y += spacing*2
+
+
+    qt_roe = round((zisk / vlastne_imanie) * 100, 2) if vlastne_imanie != 0 else 0
+    farba_roe = farba_quicktest(qt_roe, {"typ": "viac", "zelena": 10, "oranzova": 5})
+    canvas.create_text(x, y, anchor="nw", text= f"Quicktest – ROE: {qt_roe}%", fill=farba_roe)
+    y += 20
+
+    # CF / Aktíva (použitý zisk ako náhrada)
+    qt_cf_aktiva = round((zisk / aktiva) * 100, 2) if aktiva != 0 else 0
+    farba_cf = farba_quicktest(qt_cf_aktiva, {"typ": "viac", "zelena": 8, "oranzova": 4})
+    canvas.create_text(x, y, anchor="nw", text= f"Quicktest – CF / Aktíva: {qt_cf_aktiva}%", fill=farba_cf)
+    y += 20
+
+    # Bežná likvidita
+    qt_likvidita = round((OA / krat_zavazky), 2) if krat_zavazky != 0 else 0
+    farba_likvidita = farba_quicktest(qt_likvidita, {"typ": "viac", "zelena": 1.5, "oranzova": 1.0})
+    canvas.create_text(x, y, anchor="nw", text= f"Quicktest – Bežná likvidita: {qt_likvidita}", fill=farba_likvidita)
+    y += 20
+
+    # Vlastné imanie / aktíva
+    qt_vi_aktiva = round((vlastne_imanie / aktiva) * 100, 2) if aktiva != 0 else 0
+    farba_vi = farba_quicktest(qt_vi_aktiva, {"typ": "viac", "zelena": 40, "oranzova": 25})
+    canvas.create_text(x, y, anchor="nw", text= f"Quicktest – VI / Aktíva: {qt_vi_aktiva}%", fill=farba_vi)
+    y += 20
+
+    # Zadĺženosť
+    qt_zadlzenost = round((zavazky / pasiva) * 100, 2) if pasiva != 0 else 0
+    farba_zadlzenost = farba_quicktest(qt_zadlzenost, {"typ": "menej", "zelena": 50, "oranzova": 70})
+    canvas.create_text(x, y, anchor="nw", text= f"Quicktest – Zadĺženosť: {qt_zadlzenost}%", fill=farba_zadlzenost)
+    y += spacing*2
+
+    # INDIKÁTOR BONITY
+
+    bonita_skore = 0
+
+    # 1. ROE
+    roe = round((zisk / vlastne_imanie) * 100, 2) if vlastne_imanie != 0 else 0
+    if roe >= 10:
+        farba_roe = "green"
+        bonita_skore += 1
+    else:
+        farba_roe = "red"
+    canvas.create_text(x, y, anchor="nw", text= f"Bonita – ROE: {roe}% → {'1 bod' if roe >= 10 else '0 bodov'}", fill=farba_roe)
+    y += 20
+
+    # 2. ROS
+    ros = round((zisk / trzby) * 100, 2) if trzby != 0 else 0
+    if ros >= 5:
+        farba_ros = "green"
+        bonita_skore += 1
+    else:
+        farba_ros = "red"
+    canvas.create_text(x, y, anchor="nw", text= f"Bonita – ROS: {ros}% → {'1 bod' if ros >= 5 else '0 bodov'}", fill=farba_ros)
+    y += 20
+
+    # 3. Bežná likvidita
+    bezna_likvidita = round((OA / krat_zavazky), 2) if krat_zavazky != 0 else 0
+    if bezna_likvidita >= 1.5:
+        farba_likvidita = "green"
+        bonita_skore += 1
+    else:
+        farba_likvidita = "red"
+    canvas.create_text(x, y, anchor="nw", text= f"Bonita – Bežná likvidita: {bezna_likvidita} → {'1 bod' if bezna_likvidita >= 1.5 else '0 bodov'}", fill=farba_likvidita)
+    y += 20
+
+    # 4. VI / Aktíva
+    vi_aktiva = round((vlastne_imanie / aktiva) * 100, 2) if aktiva != 0 else 0
+    if vi_aktiva >= 30:
+        farba_vi = "green"
+        bonita_skore += 1
+    else:
+        farba_vi = "red"
+    canvas.create_text(x, y, anchor="nw", text= f"Bonita – Vlastné imanie / Aktíva: {vi_aktiva}% → {'1 bod' if vi_aktiva >= 30 else '0 bodov'}", fill=farba_vi)
+    y += 20
+
+    # 5. Zadĺženosť
+    zadlzenost = round((zavazky / pasiva) * 100, 2) if pasiva != 0 else 0
+    if zadlzenost <= 60:
+        farba_zad = "green"
+        bonita_skore += 1
+    else:
+        farba_zad = "red"
+    canvas.create_text(x, y, anchor="nw", text= f"Bonita – Zadĺženosť: {zadlzenost}% → {'1 bod' if zadlzenost <= 60 else '0 bodov'}", fill=farba_zad)
+    y += 20
+
+    # Súhrn skóre
+    farba_skore = "green" if bonita_skore >= 4 else "orange" if bonita_skore == 3 else "red"
+    canvas.create_text(x, y, anchor="nw", text= f"Celkové skóre bonity: {bonita_skore}/5", fill=farba_skore)
+    y += spacing*2
+
+
+
+    # ALTMANOVO Z-SKÓRE
+
+    # X1: Čistý pracovný kapitál / aktíva
+    X1 = ((OA - krat_zavazky) / aktiva) if aktiva != 0 else 0
+
+    # X2: Zisk / aktíva
+    X2 = (zisk / aktiva) if aktiva != 0 else 0
+
+    # X3: Zisk / vlastné imanie
+    X3 = (zisk / vlastne_imanie) if vlastne_imanie != 0 else 0
+
+    # X4: Vlastné imanie / záväzky
+    X4 = (vlastne_imanie / zavazky) if zavazky != 0 else 0
+
+    # X5: Tržby / aktíva
+    X5 = (trzby / aktiva) if aktiva != 0 else 0
+
+    # Výpočet Z-skóre
+    Z_score = round(0.717*X1 + 0.847*X2 + 3.107*X3 + 0.420*X4 + 0.998*X5, 2)
+
+    # Určenie farby podľa hodnoty Z-skóre
+    if Z_score > 2.9:
+        z_color = "green"
+        z_label = "Finančne zdravý podnik ✅"
+    elif Z_score >= 1.23:
+        z_color = "orange"
+        z_label = "Pozor – šedá zóna ⚠️"
+    else:
+        z_color = "red"
+        z_label = "Riziko bankrotu ❌"
+
+    # Výstup
+    canvas.create_text(x, y, anchor="nw", text= f"Altmanovo Z-skóre: {Z_score}", fill=z_color)
+    y += 20
+    canvas.create_text(x, y, anchor="nw", text= f"Hodnotenie: {z_label}", fill=z_color)
+    y += spacing*2
+
+
+    # INDIKÁTORY BUDOUCEJ FINANČNEJ TIESNE
+
+    # ROA
+    roa = round((zisk / aktiva) * 100, 2) if aktiva != 0 else 0
+    farba_roa = "red" if roa < 1 else "green"
+    canvas.create_text(x, y, anchor="nw", text= f"Indikátor – ROA: {roa}% {'❗' if roa < 1 else ''}", fill=farba_roa)
+    y += 20
+
+    # ROS
+    ros = round((zisk / trzby) * 100, 2) if trzby != 0 else 0
+    farba_ros = "red" if ros < 2 else "green"
+    canvas.create_text(x, y, anchor="nw", text= f"Indikátor – ROS: {ros}% {'❗' if ros < 2 else ''}", fill=farba_ros)
+    y += 20
+
+    # Bežná likvidita
+    likvidita = round((OA / krat_zavazky), 2) if krat_zavazky != 0 else 0
+    farba_likv = "red" if likvidita < 1 else "green"
+    canvas.create_text(x, y, anchor="nw", text= f"Indikátor – Bežná likvidita: {likvidita} {'❗' if likvidita < 1 else ''}", fill=farba_likv)
+    y += 20
+
+    # Vlastné imanie / pasíva
+    vi_pasiva = round((vlastne_imanie / pasiva) * 100, 2) if pasiva != 0 else 0
+    farba_vi = "red" if vi_pasiva < 25 else "green"
+    canvas.create_text(x, y, anchor="nw", text= f"Indikátor – Vlastné imanie / Pasíva: {vi_pasiva}% {'❗' if vi_pasiva < 25 else ''}", fill=farba_vi)
+    y += 20
+
+    # Zadlženosť
+    zadlzenost = round((zavazky / pasiva) * 100, 2) if pasiva != 0 else 0
+    farba_zadlz = "red" if zadlzenost > 75 else "green"
+    canvas.create_text(x, y, anchor="nw", text= f"Indikátor – Zadlženosť: {zadlzenost}% {'❗' if zadlzenost > 75 else ''}", fill=farba_zadlz)
+    y += spacing*2
+
+button_ukazatele = ttk.Button(root, text="Vypísať ukazatele", command=vypis_ukazatele)
+button_ukazatele.grid(row=2, column=0, columnspan=3, pady=10)
+
+root.mainloop()
+
+
